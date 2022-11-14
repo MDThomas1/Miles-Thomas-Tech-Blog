@@ -1,5 +1,30 @@
 {
   "dependencies": {
-    "dotenv": "^16.0.3"
-  }
+    "bcrypt": "^5.0.0",
+    "connect-session-sequelize": "^7.0.4",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-handlebars": "^5.2.0",
+    "express-session": "^1.17.1",
+    "mysql2": "^2.2.5",
+    "sequelize": "^6.3.5"
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "name": "task-12",
+  "version": "1.0.0",
+  "main": "server.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MDThomas1/Miles-Thomas-Tech-Blog.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MDThomas1/Miles-Thomas-Tech-Blog/issues"
+  },
+  "homepage": "https://github.com/MDThomas1/Miles-Thomas-Tech-Blog#readme",
+  "description": ""
 }
