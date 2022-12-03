@@ -39,7 +39,7 @@ const updatePost = async (event) => {
         if (response.ok) {
             document.location.replace('/')
         } else {
-            alert('Failed to delete message')
+            alert('Failed to update post!')
         }
     }
 }
