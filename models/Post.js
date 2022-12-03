@@ -16,9 +16,18 @@ Post.init(
         type: DataTypes.STRING,
         allowNull: false
     },
-    body: {
+    contents: {
         type: DataTypes.TEXT,
         allowNull: false
+    },
+    date_created: {
+      type: DataTypes.DATE,
+      allowNull: false, 
+      defaultValue: DataTypes.NOW
+    },
+    posted_by: {
+      type: DataTypes.STRING,
+      allowNull: false
     },
     user_id: {
         type: DataTypes.INTEGER,

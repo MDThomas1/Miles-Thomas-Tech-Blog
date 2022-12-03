@@ -12,16 +12,22 @@ Comment.init(
         primaryKey: true,
         autoIncrement: true,
     },
-    title: {
-        type: DataTypes.STRING,
+    message: {
+        type: DataTypes.TEXT,
         allowNull: false
     },
-    body: {
-        type: DataTypes.TEXT,
+    date_created: {
+        type: DataTypes.DATE,
+        allowNull: false, 
+        defaultValue: DataTypes.NOW
+    },
+    posted_by: {
+        type: DataTypes.STRING,
         allowNull: false
     },
     post_id: {
         type: DataTypes.INTEGER,
+        onDelete: 'CASCADE',
         references: {
             model: 'post',
             key: 'id'
