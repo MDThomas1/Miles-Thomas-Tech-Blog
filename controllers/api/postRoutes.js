@@ -5,9 +5,9 @@ const Post = require("../../models/Post");
 router.post('/upload', async (req, res) => {
     try {
         const newPost = await Post.create({ 
-            message: req.body.message, 
+            title: req.body.title,
+            contents: req.body.contents, 
             posted_by: req.session.username,
-            post_id: req.body.post_id,
             user_id: req.session.user_id
         });
 
@@ -21,7 +21,8 @@ router.post('/upload', async (req, res) => {
 router.put('/update/:id', async (req, res) => {
     try {
         const postData = await Post.update({
-            message: req.body.message 
+            title: req.body.title,
+            contents: req.body.contents
         }, {
             where: {
                 id: req.params.id
