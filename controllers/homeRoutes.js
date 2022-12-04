@@ -24,3 +24,7 @@ router.get('/postlist', withAuth, (req, res) => {
 router.get('/viewpost', withAuth, (req, res) => {
     res.render('viewpost');
 });
+
+router.get('/userposts', withAuth, (req, res) => {
+    res.render('userposts')
+});

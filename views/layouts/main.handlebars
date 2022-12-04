@@ -15,13 +15,15 @@
         </header>
 
         <nav class="bg-secondary">
-          <p class="text-light"><a>View all posts</a></p>
-          <p class="text-light"><a>View your posts</a></p>
-          <p class="text-light"><a>Create a new post</a></p>
+          <p class="text-light"><a href="/postlist">View all posts</a></p>
+          <p class="text-light"><a href="/userposts">View your posts</a></p>
+          <p class="text-light"><a href="/createpost">Create a new post</a></p>
+          {{#if loggedIn}}
+          <p class="text-light"><a href="/api/users/logout">Create a new post</a></p>
         </nav>
 
         <main>
-          
+
         {{{ body }}}
 
         </main>
