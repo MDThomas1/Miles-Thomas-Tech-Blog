@@ -57,3 +57,5 @@ router.delete('/delete/:id', async (req, res) => {
       res.status(500).json(err);
     };
 });
+
+modeule.exports = router
