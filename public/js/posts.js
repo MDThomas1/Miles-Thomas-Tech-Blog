@@ -1,8 +1,24 @@
+const cardContainer = document.querySelector('.card-container')
+const submitPost = document.querySelector('#submit-post')
+const postDelete = document.querySelector('#post-delete')
+
+const postPage = async (event) => {
+  if (event.target.hasAttribute('data-id')) {
+    const id = event.target.getAttribute('data-id');
+
+    const response = await fetch (`/viewport/${id}`, {
+      method: 'GET' 
+    })
+  }
+}
+
+cardContainer.addEventListener('click', postPage)
+
 const createPost = async (event) => {
     event.preventDefault();
   
-    const title = document.querySelector('#new-title').value.trim();
-    const contents = document.querySelector('#new-contents').value.trim();
+    const title = document.querySelector('#post-title').value.trim();
+    const contents = document.querySelector('#post-contents').value.trim();
   
     if (title && contents) {
       const response = await fetch(`/api/posts/upload`, {
@@ -19,7 +35,11 @@ const createPost = async (event) => {
         alert('Failed to create post!');
       }
     }
-  };
+};
+
+submitPost.addEventListener('submit', createPost)
+
+
 
 const updatePost = async (event) => {
     event.preventDefault();
@@ -59,4 +79,8 @@ const deletePost = async (event) => {
       }
     }
 };
+
+postDelete.addEventListener('click', deletePost)
+
+
   
