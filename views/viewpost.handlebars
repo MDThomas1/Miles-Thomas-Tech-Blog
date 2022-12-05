@@ -5,6 +5,7 @@
                 <div class="card-header bg-info text-light">
                     <h3>{{post.title}}</h3>
                     <p>Posted by {{post.created_by}} on {{post.date_created}}</p>
+                    <p id="id-saved" style="display: none;">{{post.id}}</p>
                 </div>
                 <div class="card-body">
                     <p>{{post.contents}}</p>
@@ -37,4 +38,5 @@
 
 <script src="./js/posts.js"></script>
 <script src="./js/comments.js"></script>
+<script src="./js/editing.js"></script>
 

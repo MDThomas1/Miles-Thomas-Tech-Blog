@@ -82,4 +82,18 @@ router.get('/userposts', withAuth, async (req, res) => {
     }
 });
 
+router.get('/editmenu/:id', withAuth, async (req, res) => {
+    try {
+        const postData = await Post.findByPk(req.params.id)
+
+        const post = postData.get({ plain: true })
+
+        res.render('editmenu', {
+            post
+        })
+    } catch (err) {
+        res.status(500).json(err)
+    }
+})
+
 module.exports = router
