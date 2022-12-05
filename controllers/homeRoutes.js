@@ -20,14 +20,41 @@ router.get('/createpost', withAuth, (req, res) => {
     res.render('createpost');
 });
 
-router.get('/postlist', withAuth, (req, res) => {
-    res.render('posts');
+router.get('/postlist', withAuth, async (req, res) => {
+    try {
+        const postData = await Post.findAll({
+            order: [
+                ['id', 'DESC']
+            ]
+        })
+
+        const posts = postData.map((post) => post.get({ plain: true }))
+
+        res.render('posts', {posts})
+    } catch (err) {
+        res.status(500).json(err)
+    }
 });
 
 router.get('/viewpost', withAuth, (req, res) => {
     res.render('viewpost');
 });
 
-router.get('/userposts', withAuth, (req, res) => {
-    res.render('userposts')
+router.get('/userposts', withAuth, async (req, res) => {
+    try {
+        const postData = await Post.findAll({
+            where: {
+                user_id: req.session.user_id
+            },
+            order: [
+                ['id', 'DESC']
+            ]
+        })
+
+        const posts = postData.map((post) => post.get({ plain: true }))
+
+        res.render('posts', {posts})
+    } catch (err) {
+        res.status(500).json(err)
+    }
 });
