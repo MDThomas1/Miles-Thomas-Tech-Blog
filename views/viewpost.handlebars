@@ -1,5 +1,31 @@
 <div class="container">
     <div class="row">
-        <div class="col-12"></div>
+        <div class="col-12">
+            <div class="card border border-dark rounder mt-2">
+                <div class="card-header bg-info text-light">
+                    <h3>{{post.title}}</h3>
+                    <p>Posted by {{post.created_by}} on {{post.date_created}}</p>
+                </div>
+                <div class="card-body">
+                    <p>{{post.contents}}</p>
+                </div>
+        </div>
+        <form class="rounded bg-info my-1">
+            <div class="form-group my-1">
+                <label for="comment-body" class="text-light form-text">Leave a comment on this post</label>
+                <textarea class="form-control big-button" id="comment-body" placeholder="Enter comment"></textarea>
+            </div>
+            <button class="btn btn-warning btn-lg big-button my-2" type="submit" id="login-button">Comment</button>
+        </form>
+        {{#each comments as |comment|}}
+        <div class="card my-1">
+            <div class="card-header bg-info text-light">
+                <h3>{{comment.created_by}}, {{comment.date_created}}</h3>
+            </div>
+            <div class="card-body">
+                <p>{{comment.message}}</p>
+            </div>
+        </div>
+        {{/each}}
     </div>
 </div>
