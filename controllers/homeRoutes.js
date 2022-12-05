@@ -1,12 +1,27 @@
 const router = require('express').Router();
 const withAuth = require('../utils/auth');
 const Post = require('../models/Post')
+const Comment = require('../models/Comment')
 
-router.get('/', (req, res) => {
-    res.render('homepage', {
-        loggedIn: req.session.loggedIn
-    });
+router.get('/', async (req, res) => {
+    try {
+        const postData = await Post.findAll({
+            order: [
+                ['id', 'DESC']
+            ]
+        })
+
+        const posts = postData.map((post) => post.get({ plain: true }))
+
+        res.render('homepage', {
+            posts,
+            loggenIn: req.session.loggedIn
+        })
+    } catch (err) {
+        res.status(500).json(err)
+    }
 });
+
 
 router.get('/login', (req, res) => {
     res.render('login');
@@ -20,24 +35,32 @@ router.get('/createpost', withAuth, (req, res) => {
     res.render('createpost');
 });
 
-router.get('/postlist', withAuth, async (req, res) => {
+router.get('/viewpost/:id', withAuth, async (req, res) => {
     try {
-        const postData = await Post.findAll({
+        const postData = await Post.findByPk(req.params.id)
+
+        const post = postData.get({ plain: true })
+
+        const commentData = await Comment.findAll({
+            where: {
+                post_id: post.id
+            },
             order: [
                 ['id', 'DESC']
             ]
         })
 
-        const posts = postData.map((post) => post.get({ plain: true }))
+        const comments = commentData.map((comment) => comment.get({ plain: true }))
 
-        res.render('posts', {posts})
+        res.render('viewpost', {
+            post,
+            comments,
+            userID: req.session.user_id,
+            username: req.session.username
+        })
     } catch (err) {
         res.status(500).json(err)
     }
-});
-
-router.get('/viewpost', withAuth, (req, res) => {
-    res.render('viewpost');
 });
 
 router.get('/userposts', withAuth, async (req, res) => {

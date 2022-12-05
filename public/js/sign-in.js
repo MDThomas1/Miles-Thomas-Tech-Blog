@@ -1,6 +1,6 @@
-const loginButton = document.getElementById('#login-button')
-const signUpButton = document.getElementById('#signup-button')
-const logoutButton = document.getElementById('#logout-button')
+const loginButton = document.querySelector('#login-button')
+const signUpButton = document.querySelector('#signup-button')
+const logoutButton = document.querySelector('#logout-button')
 
     const userSignup = async (event) => {
         event.preventDefault();

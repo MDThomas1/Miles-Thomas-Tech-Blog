@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const User = require('../../models/user');
+const User = require('../../models/User');
 
 router.post('/signup', async (req, res) => {
     try {
@@ -49,7 +49,7 @@ router.post('/login', async (req, res) => {
             req.session.loggedIn = true
             req.session.username = userData.username
 
-            res.status(200).json({ message: 'Welcome to QuizMe!' });
+            res.status(200).json({ message: 'Welcome to Tech Blog' });
         });
     } catch (err) {
         res.status(500).json(err);
