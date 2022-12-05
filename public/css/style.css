@@ -1,3 +1,17 @@
+header {
+    margin-bottom: 0;
+    height: 75px;
+    text-align: center;
+}
+
+h1 {
+    text-decoration: none;
+}
+
+a {
+    text-decoration: none;
+}
+
 .big-button {
     width: 60%;
     margin-left: 20%;
@@ -10,4 +24,5 @@
 
 .nav-links {
     display: inline;
+    text-align: right;
 }
