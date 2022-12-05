@@ -58,4 +58,4 @@ router.delete('/delete/:id', async (req, res) => {
     };
 });
 
-modeule.exports = router
+module.exports = router
